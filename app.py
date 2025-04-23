@@ -55,6 +55,6 @@ input_df = pd.DataFrame({
 # Predict (assuming model is loaded as `model`)
 if st.button("Predict"):
     prediction = model.predict(input_df)
-    
-st.success(f"Prediction: {'Survived' if prediction[0] == 1 else 'Did not survive'}")
+    st.success(f"Prediction: {'Survived' if prediction[0] == 1 else 'Did not survive'}")
+
 
