@@ -83,5 +83,18 @@ input_df = input_df[model.feature_names_in_]
 if st.button("Predict"):
     prediction = model.predict(input_df)
     st.success(f"Prediction: {'Survived' if prediction[0] == 1 else 'Did not survive'}")
+    # Show the predicted class (0 = Not Survived, 1 = Survived)
+    prediction = model.predict(input_df)[0]
+    st.subheader("Prediction:")
+    st.success("Survived" if prediction == 1 else "Did Not Survive")
+
+    # Show model prediction confidence
+    st.subheader("Prediction Confidence:")
+    probabilities = model.predict_proba(input_df)[0]
+    st.write(f"Not Survived (0): {probabilities[0]:.2f}")
+    st.write(f"Survived (1): {probabilities[1]:.2f}")
+
+    # Optional: show model classes just for verification/debugging
+    st.caption(f"Model Classes: {model.classes_}")
 
 
